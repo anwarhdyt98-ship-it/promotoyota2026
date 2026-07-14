@@ -1,1 +1,770 @@
+<!DOCTYPE html>
+<html lang="id">
 
+<head>
+
+    <!-- ========================================= -->
+    <!-- META SEO -->
+    <!-- ========================================= -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Simulasi Kredit Toyota | Anwar Hidayat | Toyota Parung</title>
+
+    <meta name="description"
+        content="Hitung estimasi DP dan cicilan mobil Toyota dengan simulasi kredit. Dapatkan penawaran terbaik bersama Anwar Hidayat Sales Consultant Toyota Parung.">
+
+    <meta name="keywords"
+        content="Simulasi Kredit Toyota, DP Toyota, Cicilan Toyota, Toyota Parung, Kredit Mobil Toyota">
+
+    <meta name="author"
+        content="Anwar Hidayat">
+
+    <meta name="robots"
+        content="index,follow">
+
+    <link rel="icon"
+        href="img/logo/favicon.png">
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+    <link rel="stylesheet"
+        href="css/responsive.css">
+
+    <link rel="stylesheet"
+        href="css/animation.css">
+
+</head>
+
+<body>
+
+<!-- ========================================= -->
+<!-- HEADER -->
+<!-- ========================================= -->
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="index.html" class="logo">
+
+            <img src="img/logo/logo.png"
+                alt="Toyota Logo">
+
+        </a>
+
+        <nav class="navbar">
+
+            <a href="index.html">Home</a>
+
+            <a href="promo.html">Promo</a>
+
+            <a href="simulasi.html" class="active">Simulasi</a>
+
+            <a href="tentang.html">Tentang</a>
+
+            <a href="kontak.html">Kontak</a>
+
+        </nav>
+
+        <div class="header-right">
+
+            <a href="https://wa.me/6281314161356"
+                class="btn-header">
+
+                Chat WhatsApp
+
+            </a>
+
+            <div class="menu-toggle">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ========================================= -->
+<!-- HERO -->
+<!-- ========================================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+            <div class="hero-content fade-left">
+
+                <span class="badge">
+
+                    Simulasi Kredit Toyota
+
+                </span>
+
+                <h1>
+
+                    Hitung Estimasi
+                    Kredit Toyota
+
+                </h1>
+
+                <p>
+
+                    Gunakan simulasi kredit untuk mengetahui estimasi
+                    DP, tenor, dan cicilan bulanan sesuai kebutuhan Anda.
+                    Hasil simulasi ini bersifat estimasi dan dapat berubah
+                    sesuai program leasing yang berlaku.
+
+                </p>
+
+                <div class="hero-button">
+
+                    <a href="#simulasi"
+
+                        class="btn btn-primary">
+
+                        Mulai Simulasi
+
+                    </a>
+
+                    <a href="https://wa.me/6281314161356?text=Halo Pak Anwar, saya ingin konsultasi simulasi kredit Toyota."
+
+                        class="btn btn-outline">
+
+                        Konsultasi
+
+                    </a>
+
+                </div>
+
+                <div class="hero-info">
+
+                    <div>
+
+                        <h2>DP</h2>
+
+                        <span>Fleksibel</span>
+
+                    </div>
+
+                    <div>
+
+                        <h2>1-7</h2>
+
+                        <span>Tahun</span>
+
+                    </div>
+
+                    <div>
+
+                        <h2>Fast</h2>
+
+                        <span>Approval</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image fade-right">
+
+                <img src="img/hero/hero-banner.webp"
+
+                    alt="Simulasi Kredit Toyota">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ========================================= -->
+<!-- FORM SIMULASI -->
+<!-- ========================================= -->
+
+<section class="simulation" id="simulasi">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+
+                Simulasi Kredit
+
+            </span>
+
+            <h2 class="section-title">
+
+                Hitung Estimasi Kredit Toyota
+
+            </h2>
+
+            <p class="section-description">
+
+                Pilih mobil, tentukan DP dan tenor untuk melihat estimasi cicilan bulanan.
+
+            </p>
+
+        </div>
+
+        <div class="simulation-content">
+
+            <!-- FORM -->
+
+            <div class="simulation-form">
+
+                <div class="form-group">
+
+                    <label>Pilih Mobil Toyota</label>
+
+                    <select id="mobil">
+
+                        <option value="agya">Toyota Agya</option>
+                        <option value="calya">Toyota Calya</option>
+                        <option value="avanza">Toyota Avanza</option>
+                        <option value="veloz">Toyota Veloz</option>
+                        <option value="raize">Toyota Raize</option>
+                        <option value="rush">Toyota Rush</option>
+                        <option value="zenix">Toyota Innova Zenix</option>
+                        <option value="alphard">Toyota Alphard</option>
+                        <option value="hiace">Toyota Hiace</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Harga OTR</label>
+
+                    <input
+                        type="number"
+                        id="harga"
+                        readonly>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>DP (%)</label>
+
+                    <select id="dp">
+
+                        <option value="20">20%</option>
+                        <option value="25">25%</option>
+                        <option value="30" selected>30%</option>
+                        <option value="35">35%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Tenor</label>
+
+                    <select id="tenor">
+
+                        <option value="1">1 Tahun</option>
+                        <option value="2">2 Tahun</option>
+                        <option value="3">3 Tahun</option>
+                        <option value="4">4 Tahun</option>
+                        <option value="5" selected>5 Tahun</option>
+                        <option value="6">6 Tahun</option>
+                        <option value="7">7 Tahun</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Bunga (%)</label>
+
+                    <input
+                        type="number"
+                        id="bunga"
+                        value="3.5"
+                        step="0.1">
+
+                </div>
+
+                <div class="hero-button">
+
+                    <button
+                        id="btnHitung"
+                        class="btn btn-primary">
+
+                        <i class="fa-solid fa-calculator"></i>
+
+                        Hitung Simulasi
+
+                    </button>
+
+                    <button
+                        id="btnWA"
+                        class="btn btn-outline">
+
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        Kirim WhatsApp
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- HASIL -->
+
+            <div class="simulation-result">
+
+                <h2>
+
+                    Hasil Simulasi
+
+                </h2>
+
+                <div class="result-card">
+
+                    <div class="result-item">
+
+                        <span>Harga OTR</span>
+
+                        <strong id="hargaOutput">
+
+                            Rp 0
+
+                        </strong>
+
+                    </div>
+
+                    <div class="result-item">
+
+                        <span>DP</span>
+
+                        <strong id="dpOutput">
+
+                            Rp 0
+
+                        </strong>
+
+                    </div>
+
+                    <div class="result-item">
+
+                        <span>Total Pinjaman</span>
+
+                        <strong id="pinjamanOutput">
+
+                            Rp 0
+
+                        </strong>
+
+                    </div>
+
+                    <div class="result-item total">
+
+                        <span>Estimasi Angsuran</span>
+
+                        <strong id="angsuranOutput">
+
+                            Rp 0 / bulan
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <p class="simulation-note">
+
+                    * Simulasi ini hanya sebagai estimasi.
+                    Perhitungan akhir mengikuti program leasing dan promo Toyota yang berlaku.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ========================================= -->
+<!-- KEUNGGULAN -->
+<!-- ========================================= -->
+
+<section class="features">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+
+                Keunggulan
+
+            </span>
+
+            <h2 class="section-title">
+
+                Kenapa Simulasi Bersama Kami?
+
+            </h2>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-calculator"></i>
+
+                </div>
+
+                <h3>Simulasi Gratis</h3>
+
+                <p>
+
+                    Hitung estimasi kredit kapan saja tanpa biaya.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                </div>
+
+                <h3>DP Fleksibel</h3>
+
+                <p>
+
+                    Pilihan DP menyesuaikan kebutuhan Anda.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <h3>Proses Cepat</h3>
+
+                <p>
+
+                    Pengajuan kredit lebih mudah dan cepat.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FAQ -->
+<!-- ========================================= -->
+
+<section class="faq">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-subtitle">
+
+                FAQ
+
+            </span>
+
+            <h2 class="section-title">
+
+                Pertanyaan Seputar Simulasi
+
+            </h2>
+
+        </div>
+
+        <div class="faq-box">
+
+            <details open>
+
+                <summary>
+
+                    Apakah simulasi ini sudah pasti?
+
+                </summary>
+
+                <p>
+
+                    Simulasi hanya sebagai estimasi.
+                    Perhitungan akhir mengikuti program leasing
+                    dan promo Toyota yang berlaku.
+
+                </p>
+
+            </details>
+
+            <details>
+
+                <summary>
+
+                    Berapa DP minimal?
+
+                </summary>
+
+                <p>
+
+                    DP dapat berbeda tergantung tipe mobil
+                    dan lembaga pembiayaan.
+
+                </p>
+
+            </details>
+
+            <details>
+
+                <summary>
+
+                    Apakah bisa trade in?
+
+                </summary>
+
+                <p>
+
+                    Bisa. Kami menerima tukar tambah
+                    kendaraan semua merek.
+
+                </p>
+
+            </details>
+
+            <details>
+
+                <summary>
+
+                    Bagaimana cara mengajukan kredit?
+
+                </summary>
+
+                <p>
+
+                    Hubungi kami melalui WhatsApp,
+                    kami akan membantu proses pengajuan
+                    sampai unit dikirim.
+
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CTA -->
+<!-- ========================================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-content">
+
+            <h2>
+
+                Konsultasikan Simulasi Kredit Anda
+
+            </h2>
+
+            <p>
+
+                Hubungi Anwar Hidayat sekarang
+                untuk mendapatkan simulasi terbaik,
+                promo terbaru dan informasi stok Toyota.
+
+            </p>
+
+            <a href="https://wa.me/6281314161356?text=Halo Pak Anwar, saya ingin konsultasi simulasi kredit Toyota."
+
+                class="btn btn-primary">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                Chat WhatsApp
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FOOTER -->
+<!-- ========================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <img src="img/logo/logo.png"
+
+                    class="footer-logo"
+
+                    alt="Toyota Logo">
+
+                <p>
+
+                    <strong>Anwar Hidayat</strong>
+
+                    <br>
+
+                    Sales Consultant Toyota Parung
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Menu</h3>
+
+                <a href="index.html">Home</a>
+
+                <a href="promo.html">Promo</a>
+
+                <a href="simulasi.html">Simulasi</a>
+
+                <a href="tentang.html">Tentang</a>
+
+                <a href="kontak.html">Kontak</a>
+
+            </div>
+
+            <div>
+
+                <h3>Kontak</h3>
+
+                <p>
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    0813-1416-1356
+
+                </p>
+
+                <p>
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                    @toyota_parung
+
+                </p>
+
+                <p>
+
+                    <i class="fa-brands fa-tiktok"></i>
+
+                    Anwar Toyota Sawangan
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 Anwar Hidayat | Sales Consultant Toyota Parung.
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ========================================= -->
+<!-- FLOATING WHATSAPP -->
+<!-- ========================================= -->
+
+<a href="https://wa.me/6281314161356?text=Halo Pak Anwar, saya ingin simulasi kredit Toyota."
+
+class="floating-wa"
+
+aria-label="WhatsApp">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script src="js/script.js"></script>
+
+<script src="js/simulasi.js"></script>
+
+<script src="js/whatsapp.js"></script>
+
+</body>
+</html>
