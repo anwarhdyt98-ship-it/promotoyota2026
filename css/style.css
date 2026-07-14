@@ -864,3 +864,64 @@ section{
     opacity:1;
     transform:translateY(0);
 }
+.slider-wrapper{
+    position:relative;
+    overflow:hidden;
+    border-radius:25px;
+}
+
+.slider{
+    display:flex;
+    transition:.6s ease;
+}
+
+.slide{
+    min-width:100%;
+}
+
+.slide img{
+    width:100%;
+    display:block;
+}
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#EB0A1E;
+    color:#fff;
+    cursor:pointer;
+}
+
+.prev{
+    left:20px;
+}
+
+.next{
+    right:20px;
+}
+
+.slider-dots{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#ddd;
+}
+
+.dot.active{
+    background:#EB0A1E;
+}
