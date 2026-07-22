@@ -6,15 +6,10 @@ const menuToggle = document.querySelector(".menu-toggle");
 const navbar = document.querySelector(".navbar");
 
 if (menuToggle && navbar) {
-
     menuToggle.addEventListener("click", () => {
-
         navbar.classList.toggle("active");
-
         menuToggle.classList.toggle("active");
-
     });
-
 }
 
 // =========================================
@@ -22,34 +17,81 @@ if (menuToggle && navbar) {
 // =========================================
 
 document.querySelectorAll(".navbar a").forEach(link => {
-
     link.addEventListener("click", () => {
-
-        navbar.classList.remove("active");
-
-        menuToggle.classList.remove("active");
-
+        if (navbar) navbar.classList.remove("active");
+        if (menuToggle) menuToggle.classList.remove("active");
     });
-
 });
 
 // =========================================
-// HEADER SCROLL
+// STICKY HEADER
 // =========================================
 
 const header = document.querySelector(".header");
 
 window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 80) {
+    if (!header) return;
 
-        header.style.padding = "0";
-
-        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.12)";
-
+    if (window.scrollY > 50) {
+        header.classList.add("sticky");
     } else {
+        header.classList.remove("sticky");
+    }
 
-        header.style.boxShadow = "0 5px 20px rgba(0,0,0,.08)";
+});
+
+// =========================================
+// BACK TO TOP
+// =========================================
+
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+
+    if (!backTop) return;
+
+    if (window.scrollY > 300) {
+        backTop.classList.add("show");
+    } else {
+        backTop.classList.remove("show");
+    }
+
+});
+
+if (backTop) {
+
+    backTop.addEventListener("click", () => {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    });
+
+}
+
+// =========================================
+// LOADER
+// =========================================
+
+window.addEventListener("load", () => {
+
+    const loader = document.querySelector(".loader");
+
+    if (loader) {
+
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+
+            loader.style.display = "none";
+
+        }, 500);
 
     }
 
@@ -82,16 +124,116 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // =========================================
+// COUNTER
+// =========================================
+
+const counters = document.querySelectorAll(".counter-item h2");
+
+function runCounter() {
+
+    counters.forEach(counter => {
+
+        const target = parseInt(counter.innerText.replace(/\D/g, ""));
+
+        if (!target) return;
+
+        let current = 0;
+
+        const increment = Math.ceil(target / 80);
+
+        const update = () => {
+
+            current += increment;
+
+            if (current >= target) {
+
+                counter.innerText = target + "+";
+
+            } else {
+
+                counter.innerText = current + "+";
+
+                requestAnimationFrame(update);
+
+            }
+
+        };
+
+        update();
+
+    });
+
+}
+
+const counterSection = document.querySelector(".counter");
+
+if (counterSection) {
+
+    const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                runCounter();
+
+                observer.disconnect();
+
+            }
+
+        });
+
+    });
+
+    observer.observe(counterSection);
+
+}
+
+// =========================================
+// FAQ AUTO CLOSE
+// =========================================
+
+const details = document.querySelectorAll(".faq details");
+
+details.forEach(detail => {
+
+    detail.addEventListener("toggle", () => {
+
+        if (detail.open) {
+
+            details.forEach(other => {
+
+                if (other !== detail) {
+
+                    other.removeAttribute("open");
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
+
+// =========================================
 // SCROLL ANIMATION
 // =========================================
 
-const observer = new IntersectionObserver((entries) => {
+const reveals = document.querySelectorAll(
+
+".car-card,.bonus-card,.testimonial-card,.contact-card,.about-grid,.vision-card,.calculator,.price-table,.faq details"
+
+);
+
+const revealObserver = new IntersectionObserver(entries => {
 
     entries.forEach(entry => {
 
         if (entry.isIntersecting) {
 
-            entry.target.classList.add("show");
+            entry.target.classList.add("fade-up");
 
         }
 
@@ -99,154 +241,122 @@ const observer = new IntersectionObserver((entries) => {
 
 }, {
 
-    threshold: .15
+    threshold: 0.15
 
 });
 
-document.querySelectorAll(
+reveals.forEach(item => {
 
-".feature-card,.car-card,.promo-card,.testimonial-card,.counter-card,.about-image,.about-content"
-
-).forEach(el => {
-
-    el.classList.add("hidden");
-
-    observer.observe(el);
+    revealObserver.observe(item);
 
 });
 
 // =========================================
-// HERO IMAGE PARALLAX
+// FILTER MOBIL
 // =========================================
 
-const heroImage = document.querySelector(".hero-image img");
+const filterButtons = document.querySelectorAll(".filter-btn");
 
-window.addEventListener("scroll", () => {
+filterButtons.forEach(button => {
 
-    if (heroImage) {
+    button.addEventListener("click", () => {
 
-        let value = window.scrollY * 0.15;
+        filterButtons.forEach(btn => btn.classList.remove("active"));
 
-        heroImage.style.transform = `translateY(${value}px)`;
+        button.classList.add("active");
 
-    }
-
-});
-
-// =========================================
-// FLOATING WHATSAPP
-// =========================================
-
-const floating = document.querySelector(".floating-wa");
-
-window.addEventListener("scroll", () => {
-
-    if (!floating) return;
-
-    if (window.scrollY > 500) {
-
-        floating.style.opacity = "1";
-
-        floating.style.visibility = "visible";
-
-    } else {
-
-        floating.style.opacity = "0";
-
-        floating.style.visibility = "hidden";
-
-    }
-
-});
-
-// =========================================
-// COUNTER
-// =========================================
-
-const counters = document.querySelectorAll(".counter-card h2");
-
-const speed = 80;
-
-counters.forEach(counter => {
-
-    const update = () => {
-
-        const target = parseInt(counter.innerText);
-
-        if (isNaN(target)) return;
-
-        const count = +counter.getAttribute("data-count") || 0;
-
-        const increment = Math.ceil(target / speed);
-
-        if (count < target) {
-
-            counter.setAttribute("data-count", count + increment);
-
-            counter.innerText = count + increment;
-
-            setTimeout(update, 20);
-
-        } else {
-
-            counter.innerText = target + "+";
-
-        }
-
-    };
-
-    update();
-
-});
-
-// =========================================
-// ACTIVE MENU
-// =========================================
-
-const sections = document.querySelectorAll("section");
-
-const navLinks = document.querySelectorAll(".navbar a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 120;
-
-        if (pageYOffset >= sectionTop) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
+        // siap jika nanti ditambah filter kategori
 
     });
 
 });
 
 // =========================================
-// LOADING
+// SIMULASI
 // =========================================
 
-window.addEventListener("load", () => {
+const car = document.getElementById("car");
 
-    document.body.classList.add("loaded");
+const price = document.getElementById("price");
+
+function rupiah(number) {
+
+    return "Rp " + Number(number).toLocaleString("id-ID");
+
+}
+
+if (car && price) {
+
+    function updatePrice() {
+
+        price.value = rupiah(car.value);
+
+    }
+
+    updatePrice();
+
+    car.addEventListener("change", updatePrice);
+
+}
+
+function hitungSimulasi() {
+
+    if (!car) return;
+
+    const harga = Number(car.value);
+
+    const dp = Number(document.getElementById("dp").value);
+
+    const tenor = Number(document.getElementById("tenor").value);
+
+    if (dp <= 0) {
+
+        alert("Masukkan DP terlebih dahulu.");
+
+        return;
+
+    }
+
+    const pinjaman = harga - dp;
+
+    const cicilan = Math.round(pinjaman / tenor);
+
+    const hasil = document.getElementById("hasilAngsuran");
+
+    if (hasil) {
+
+        hasil.innerHTML =
+            "<strong>" + rupiah(cicilan) + "</strong> / bulan (estimasi)";
+
+    }
+
+    const wa = document.getElementById("waSimulasi");
+
+    if (wa) {
+
+        const pesan =
+            "Halo Pak Anwar.%0A%0ASaya ingin simulasi kredit Toyota.%0A" +
+            "Mobil : " + car.options[car.selectedIndex].text +
+            "%0AHarga : " + rupiah(harga) +
+            "%0ADP : " + rupiah(dp) +
+            "%0ATenor : " + tenor + " bulan" +
+            "%0AEstimasi Cicilan : " + rupiah(cicilan) + "/bulan";
+
+        wa.href =
+            "https://wa.me/6281314161356?text=" + pesan;
+
+    }
+
+}
+
+// =========================================
+// COPYRIGHT YEAR
+// =========================================
+
+document.querySelectorAll(".year").forEach(item => {
+
+    item.textContent = new Date().getFullYear();
 
 });
 
-// =========================================
-// END
-// =========================================
+console.log("Toyota Premium Website V4 Loaded Successfully 🚗");
