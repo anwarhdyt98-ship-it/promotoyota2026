@@ -1,132 +1,211 @@
 // =========================================
-// DATA HARGA MOBIL
+// TOYOTA CREDIT SIMULATION
 // =========================================
+
+// Daftar Harga OTR (ubah sesuai harga terbaru)
 
 const hargaMobil = {
-
-    agya: 175900000,
-    calya: 169600000,
-    avanza: 242900000,
-    veloz: 292800000,
-    raize: 242200000,
+    agya: 180400000,
+    calya: 191400000,
+    avanza: 243000000,
+    veloz: 303700000,
+    raize: 246000000,
     rush: 288100000,
-    zenix: 430000000,
-    alphard: 1477000000,
-    hiace: 690000000
-
+    yariscross: 362000000,
+    zenix: 436000000,
+    reborn: 391000000,
+    fortuner: 581000000,
+    rangga: 188700000,
+    alphard: 1457000000,
+    velfire: 1839000000
 };
 
-// =========================================
-// FORMAT RUPIAH
-// =========================================
+const bungaPerTahun = 0.05;
 
-function rupiah(angka){
-
-    return "Rp " + angka.toLocaleString("id-ID");
-
-}
-
-// =========================================
-// UPDATE HARGA
 // =========================================
 
 const mobil = document.getElementById("mobil");
 const harga = document.getElementById("harga");
+const dp = document.getElementById("dp");
+const tenor = document.getElementById("tenor");
+const angsuran = document.getElementById("angsuran");
+const pinjaman = document.getElementById("pinjaman");
+const bunga = document.getElementById("bunga");
+const waButton = document.getElementById("waButton");
 
-if(mobil){
+// =========================================
 
-    mobil.addEventListener("change",function(){
+function rupiah(angka) {
 
-        harga.value = hargaMobil[this.value];
+    return "Rp " + Number(angka).toLocaleString("id-ID");
+
+}
+
+// =========================================
+
+function updateHarga() {
+
+    if (!mobil) return;
+
+    const hargaOTR = hargaMobil[mobil.value] || 0;
+
+    if (harga) {
+
+        harga.value = rupiah(hargaOTR);
+
+    }
+
+}
+
+if (mobil) {
+
+    mobil.addEventListener("change", () => {
+
+        updateHarga();
+
+        hitungSimulasi();
 
     });
 
 }
 
 // =========================================
-// HITUNG SIMULASI
-// =========================================
 
-function hitungSimulasi(){
+function hitungSimulasi() {
 
-    let hargaMobilValue = Number(document.getElementById("harga").value);
+    if (!mobil) return;
 
-    let dpPersen = Number(document.getElementById("dp").value);
+    const hargaOTR = hargaMobil[mobil.value];
 
-    let tenor = Number(document.getElementById("tenor").value);
+    const dpValue = Number(dp.value);
 
-    let bunga = Number(document.getElementById("bunga").value);
+    const tenorValue = Number(tenor.value);
 
-    let dpNominal = hargaMobilValue * dpPersen / 100;
+    if (!hargaOTR || dpValue <= 0 || tenorValue <= 0) {
 
-    let pinjaman = hargaMobilValue - dpNominal;
+        return;
 
-    let bungaTotal = pinjaman * (bunga / 100) * tenor;
+    }
 
-    let totalPinjaman = pinjaman + bungaTotal;
+    const totalPinjaman = hargaOTR - dpValue;
 
-    let angsuran = totalPinjaman / (tenor * 12);
+    const totalBunga = totalPinjaman * bungaPerTahun * (tenorValue / 12);
 
-    document.getElementById("hargaOutput").innerHTML = rupiah(hargaMobilValue);
+    const totalBayar = totalPinjaman + totalBunga;
 
-    document.getElementById("dpOutput").innerHTML = rupiah(dpNominal);
+    const cicilan = Math.round(totalBayar / tenorValue);
 
-    document.getElementById("pinjamanOutput").innerHTML = rupiah(pinjaman);
+    if (pinjaman) {
 
-    document.getElementById("angsuranOutput").innerHTML = rupiah(Math.round(angsuran)) + " / bulan";
+        pinjaman.innerHTML = rupiah(totalPinjaman);
 
-}
+    }
 
-// =========================================
-// BUTTON HITUNG
-// =========================================
+    if (bunga) {
 
-const btnHitung = document.getElementById("btnHitung");
+        bunga.innerHTML = rupiah(totalBunga);
 
-if(btnHitung){
+    }
 
-    btnHitung.addEventListener("click",hitungSimulasi);
+    if (angsuran) {
 
-}
+        angsuran.innerHTML = rupiah(cicilan);
 
-// =========================================
-// WHATSAPP
-// =========================================
+    }
 
-const btnWA = document.getElementById("btnWA");
+    if (waButton) {
 
-if(btnWA){
-
-    btnWA.addEventListener("click",()=>{
-
-        let namaMobil = mobil.options[mobil.selectedIndex].text;
-
-        let hargaMobilValue = document.getElementById("harga").value;
-
-        let dp = document.getElementById("dp").value;
-
-        let tenor = document.getElementById("tenor").value;
-
-        let angsuran = document.getElementById("angsuranOutput").innerText;
-
-        let pesan =
+        const pesan =
 `Halo Pak Anwar,
-Saya ingin konsultasi Toyota.
 
-Mobil : ${namaMobil}
-Harga : ${rupiah(Number(hargaMobilValue))}
-DP : ${dp}%
-Tenor : ${tenor} Tahun
-Estimasi Angsuran : ${angsuran}`;
+Saya ingin simulasi kredit Toyota.
 
-        window.open(
+Mobil : ${mobil.options[mobil.selectedIndex].text}
+Harga : ${rupiah(hargaOTR)}
+DP : ${rupiah(dpValue)}
+Tenor : ${tenorValue} Bulan
+Estimasi Angsuran : ${rupiah(cicilan)}/bulan
 
-`https://wa.me/6281314161356?text=${encodeURIComponent(pesan)}`,
+Mohon info promo terbaru ya.`;
 
-"_blank"
+        waButton.href =
+            "https://wa.me/6281314161356?text=" +
+            encodeURIComponent(pesan);
 
-);
+    }
+
+}
+
+// =========================================
+
+if (dp) {
+
+    dp.addEventListener("input", hitungSimulasi);
+
+}
+
+if (tenor) {
+
+    tenor.addEventListener("change", hitungSimulasi);
+
+}
+
+// =========================================
+// DP CEPAT
+// =========================================
+
+document.querySelectorAll(".dp-btn").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        if (!mobil || !dp) return;
+
+        const persen = Number(btn.dataset.dp);
+
+        const hargaOTR = hargaMobil[mobil.value];
+
+        dp.value = Math.round(hargaOTR * persen / 100);
+
+        hitungSimulasi();
+
+    });
+
+});
+
+// =========================================
+// RESET
+// =========================================
+
+const resetButton = document.getElementById("resetSimulasi");
+
+if (resetButton) {
+
+    resetButton.addEventListener("click", () => {
+
+        mobil.selectedIndex = 0;
+
+        harga.value = "";
+
+        dp.value = "";
+
+        tenor.selectedIndex = 0;
+
+        pinjaman.innerHTML = "-";
+
+        bunga.innerHTML = "-";
+
+        angsuran.innerHTML = "-";
 
     });
 
 }
+
+// =========================================
+// LOAD
+// =========================================
+
+updateHarga();
+
+hitungSimulasi();
+
+console.log("Toyota Simulasi Kredit Loaded 🚗");
