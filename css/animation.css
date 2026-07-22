@@ -1,0 +1,265 @@
+/* =========================================
+   ANIMATION.CSS
+========================================= */
+
+/* Fade Up */
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Fade Left */
+.fade-left{
+    opacity:0;
+    transform:translateX(-40px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.fade-left.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Fade Right */
+.fade-right{
+    opacity:0;
+    transform:translateX(40px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.fade-right.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Zoom */
+.zoom{
+    opacity:0;
+    transform:scale(.9);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.zoom.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* Hero Image Floating */
+.hero-image img{
+    animation:heroFloat 5s ease-in-out infinite;
+}
+
+@keyframes heroFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* Floating WhatsApp */
+.floating-wa{
+
+    animation:waPulse 2s infinite;
+
+}
+
+@keyframes waPulse{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(37,211,102,.5);
+    }
+
+    70%{
+        box-shadow:0 0 0 16px rgba(37,211,102,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0);
+    }
+
+}
+
+/* Loader */
+
+.loader::after{
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* Fade In */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* Slide Up */
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Scale */
+
+@keyframes scaleUp{
+
+    from{
+
+        transform:scale(.95);
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* Rotate */
+
+.rotate{
+
+    animation:rotate 8s linear infinite;
+
+}
+
+@keyframes rotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* Bounce */
+
+.bounce{
+
+    animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+    0%,20%,50%,80%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    40%{
+
+        transform:translateY(-8px);
+
+    }
+
+    60%{
+
+        transform:translateY(-4px);
+
+    }
+
+}
+
+/* Shine Button */
+
+.btn-primary{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn-primary::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.25);
+
+    transform:skewX(-20deg);
+
+}
+
+.btn-primary:hover::before{
+
+    left:150%;
+
+    transition:.8s;
+
+}
